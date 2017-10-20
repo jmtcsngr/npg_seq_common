@@ -85,16 +85,6 @@ make
 make install
 popd
 
-# pb_calibration # for calibration_pu
-
-git clone --branch ${PB_CALIBRATION_VERSION} --depth 1 https://github.com/wtsi-npg/pb_calibration.git
-pushd pb_calibration/src
-autoreconf --force --install
-./configure --with-samtools=/tmp/samtools --with-io_lib=/tmp --prefix=/tmp
-make
-make install
-popd
-
 # htslib/samtools
 
 git clone --branch ${HTSLIB_VERSION} --depth 1 https://github.com/samtools/htslib htslib
@@ -120,6 +110,15 @@ ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
 ln -s /tmp/samtools/samtools /tmp/bin/samtools
 popd
 
+# pb_calibration # for calibration_pu
+
+git clone --branch ${PB_CALIBRATION_VERSION} --depth 1 https://github.com/wtsi-npg/pb_calibration.git
+pushd pb_calibration/src
+autoreconf --force --install
+./configure --with-samtools=/tmp/samtools --with-io_lib=/tmp --prefix=/tmp
+make
+make install
+popd
 
 # picard
 wget https://sourceforge.net/projects/picard/files/picard-tools/${PICARD_VERSION}/picard-tools-${PICARD_VERSION}.zip/download -O picard-tools-${PICARD_VERSION}.zip

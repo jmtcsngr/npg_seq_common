@@ -8,10 +8,6 @@ Dependencies on other NPG Perl packages:
 1. npg_tracking package https://github.com/wtsi-npg/npg_tracking
 2. npg-qc package - https://github.com/wtsi-npg/npg_qc
 
-Dependencies on other NPG bioinformatics tools
-
-1. samtools_irods https://github.com/wtsi-npg/samtools_irods
-
 Dependencies on third party bioinformatics tools
 
 1. bwa http://bio-bwa.sourceforge.net/

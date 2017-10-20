@@ -110,9 +110,7 @@ ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
 ln -s /tmp/samtools/samtools /tmp/bin/samtools
 ln -s /tmp/samtools /tmp/samtools/lib
 ln -s /tmp/samtools /tmp/samtools/include
-ls -la /tmp
-ls -la /tmp/bin
-ls -la /tmp/samtools
+ls -la /tmp/samtools/include
 popd
 
 which -a samtools

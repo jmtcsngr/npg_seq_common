@@ -90,7 +90,7 @@ popd
 git clone --branch ${PB_CALIBRATION_VERSION} --depth 1 https://github.com/wtsi-npg/pb_calibration.git
 pushd pb_calibration/src
 autoreconf --force --install
-./configure --with-samtools=/tmp/samtools-0.1.19 --with-io_lib=/tmp --prefix=/tmp
+./configure --with-samtools=/tmp/samtools --with-io_lib=/tmp --prefix=/tmp
 make
 make install
 popd

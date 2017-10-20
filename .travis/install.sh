@@ -108,6 +108,8 @@ autoreconf -i
 make
 make install
 ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
+ls -la /tmp
+ls -la /tmp/bin
 ls -la /tmp/samtools
 popd
 

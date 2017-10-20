@@ -109,6 +109,7 @@ make
 make install
 ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
 ln -s /tmp/samtools/samtools /tmp/bin/samtools
+ls -la /tmp/samtools
 popd
 
 # pb_calibration # for calibration_pu

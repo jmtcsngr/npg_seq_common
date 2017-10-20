@@ -162,8 +162,8 @@ do
       cd "$repo"
         cpanm --quiet --notest --installdeps . || find /home/travis/.cpanm/work -cmin -1 -name '*.log' -exec tail -n20  {} \;
           perl Build.PL
-            ./Build
-              ./Build install
+            ./Build --verbose
+            ./Build install
           done
 
           cd "$TRAVIS_BUILD_DIR"

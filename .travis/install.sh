@@ -75,16 +75,6 @@ ln -s /tmp/bowtie2/bowtie2-inspect /tmp/bin/bowtie2-inspect
 ln -s /tmp/bowtie2/bowtie2-inspect-l /tmp/bin/bowtie2-inspect-l
 ln -s /tmp/bowtie2/bowtie2-inspect-s /tmp/bin/bowtie2-inspect-s
 
-
-# samtools 0.1.19
-
-wget http://sourceforge.net/projects/samtools/files/samtools/${SAMTOOLS_VERSION}/samtools-${SAMTOOLS_VERSION}.tar.bz2/download -O samtools-${SAMTOOLS_VERSION}.tar.bz2
-tar jxf samtools-${SAMTOOLS_VERSION}.tar.bz2
-pushd samtools-${SAMTOOLS_VERSION}
-make
-ln -s /tmp/samtools-${SAMTOOLS_VERSION}/samtools /tmp/bin/samtools
-popd
-
 # staden_io_lib
 
 wget http://sourceforge.net/projects/staden/files/io_lib/${STADEN_IO_LIB_VERSION}/io_lib-${STADEN_IO_LIB_VERSION}.tar.gz/download -O io_lib.tar.gz
@@ -94,7 +84,6 @@ pushd io_lib-${STADEN_IO_LIB_VERSION}
 make
 make install
 popd
-
 
 # pb_calibration # for calibration_pu
 
@@ -108,7 +97,7 @@ popd
 
 # htslib/samtools
 
-git clone --branch ${HTSLIB_VERSION} --depth 1 https://github.com/wtsi-npg/htslib.git htslib
+git clone --branch ${HTSLIB_VERSION} --depth 1 https://github.com/samtools/htslib htslib
 pushd htslib
 autoreconf -fi
 ./configure --prefix=/tmp --enable-plugins
@@ -116,9 +105,8 @@ make
 make install
 popd
 
-
-git clone --branch ${SAMTOOLS1_VERSION} --depth 1 https://github.com/wtsi-npg/samtools.git samtools-irods
-pushd samtools-irods
+git clone --branch ${SAMTOOLS_VERSION} --depth 1 https://github.com/samtools/samtools samtools
+pushd samtools
 mkdir -p acinclude.m4
 pushd acinclude.m4
 curl -L https://github.com/samtools/samtools/files/62424/ax_with_htslib.m4.txt > ax_with_htslib.m4
@@ -128,7 +116,8 @@ aclocal -I acinclude.m4
 autoreconf -i
 ./configure --prefix=/tmp --with-htslib=/tmp/htslib --enable-plugins --without-curses
 make
-ln -s /tmp/samtools-irods/samtools /tmp/bin/samtools_irods
+ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
+ln -s /tmp/samtools/samtools /tmp/bin/samtools
 popd
 
 

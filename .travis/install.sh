@@ -106,8 +106,8 @@ aclocal -I acinclude.m4
 autoreconf -i
 ./configure --prefix=/tmp --with-htslib=/tmp/htslib --enable-plugins --without-curses
 make
-make install
 ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
+ln -s /tmp/samtools/samtools /tmp/bin/samtools
 ls -la /tmp
 ls -la /tmp/bin
 ls -la /tmp/samtools

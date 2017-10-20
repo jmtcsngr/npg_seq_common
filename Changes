@@ -1,6 +1,7 @@
 LIST OF CHANGES
 
   - Travis build and use samtools 1.6
+  - drop perl 5.16 from travis matrix
 
 release 50.16
   - RefMaker: updated to generate STAR aligner reference genome indexes

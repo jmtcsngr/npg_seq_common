@@ -106,25 +106,14 @@ aclocal -I acinclude.m4
 autoreconf -i
 ./configure --prefix=/tmp --with-htslib=/tmp/htslib --enable-plugins --without-curses
 make
+# for other tools to find samtools and its alias samtools_irods
 ln -s /tmp/samtools/samtools /tmp/bin/samtools_irods
 ln -s /tmp/samtools/samtools /tmp/bin/samtools
+# for compiling tools in npg_qc since they expect to find samtools headers in /include
+# relative to which samtools in PATH
 ln -s /tmp/samtools /tmp/samtools/lib
 ln -s /tmp/samtools /tmp/samtools/include
-ls -la /tmp/samtools/include
 popd
-
-which -a samtools
-which -a htsfile
-
-# pb_calibration # for calibration_pu
-
-# git clone --branch ${PB_CALIBRATION_VERSION} --depth 1 https://github.com/wtsi-npg/pb_calibration.git
-# pushd pb_calibration/src
-# autoreconf --force --install
-# ./configure --with-samtools=/tmp/samtools --with-io_lib=/tmp --prefix=/tmp
-# make
-# make install
-# popd
 
 # picard
 wget https://sourceforge.net/projects/picard/files/picard-tools/${PICARD_VERSION}/picard-tools-${PICARD_VERSION}.zip/download -O picard-tools-${PICARD_VERSION}.zip
@@ -165,7 +154,7 @@ do
       cd "$repo"
         cpanm --quiet --notest --installdeps . || find /home/travis/.cpanm/work -cmin -1 -name '*.log' -exec tail -n20  {} \;
           perl Build.PL
-            ./Build --verbose
+            ./Build
             ./Build install
           done
 

@@ -113,6 +113,9 @@ ls -la /tmp/bin
 ls -la /tmp/samtools
 popd
 
+which -a samtools
+which -a htsfile
+
 # pb_calibration # for calibration_pu
 
 # git clone --branch ${PB_CALIBRATION_VERSION} --depth 1 https://github.com/wtsi-npg/pb_calibration.git
